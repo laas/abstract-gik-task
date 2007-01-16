@@ -4,8 +4,11 @@
 #include "jrlRobotMotion"
 
 /**
-   \brief A Whole body motion task is a set of prioritized motion constraints
+   \brief A Whole body motion task is a set of prioritized motion constraints. 
+
+   The priority is defined by the rank in the heap of constraints. The lower the rank, the higher the priority.
 */
+
 class CjrlGikWholeBodyMotionTask {
 public:
   /**
@@ -13,9 +16,17 @@ public:
      @{
   */
   /**
-     \brief Add a Motion constraint.
+     \brief Add a motion constraint in heap.
   */
   virtual addMotionConstraint(const CjrlGikMotionConstraint& inMotionConstraint) = 0;
+
+  /**
+     \brief Remove a motion constraint from the heap.
+
+     \param inRank rank of the constraint to remove in the heap.
+     \return TRUE if success, FALSE if rank is more than number of constraints.
+  */
+  virtual bool removeMotionConstraint(unsigned int inRank) = 0;
 
   /**
      \brief Get number of motion constraints.
