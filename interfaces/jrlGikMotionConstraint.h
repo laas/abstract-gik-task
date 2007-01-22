@@ -1,6 +1,9 @@
 #ifndef JRL_GIK_MOTION_CONSTRAINT_H
 #define JRL_GIK_MOTION_CONSTRAINT_H
 
+
+#include "jrlGik/jrlGikStateConstraint.h"
+
 /**
    \brief Define the evolution of a state constraint along time
 */
@@ -12,7 +15,7 @@ public:
      \param inStartTime Lower bound of the definition interval of the motion constraint.
      \param inEndTime Upper bound of the definition interval of the motion constraint.
   */
-  CjrlGikMotionConstraint(double inStartTime, double inEndTime);
+  virtual CjrlGikMotionConstraint(double inStartTime, double inEndTime) = 0;
 
   /**
      \brief Get state constraint at a given time.
