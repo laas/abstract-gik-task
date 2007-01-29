@@ -14,107 +14,115 @@
 
 
 namespace ublas = boost::numeric::ublas;
+//temporary typedefs. They'll be deleted when having the proper linkage with the walkGen's algebra classes
+typedef ublas::matrix<double> matrix3;
+//temporary
 
 /**
-        \brief Specify a 3D orientation constraint on a body of the robot.
+\brief Specify a 3D orientation constraint on a body of the robot.
  */
 
 class CjrlGik3DOrientConstraint:CjrlGikStateConstraint
 {
-    public:
+public:
     /**
-        \name Definition of the constraint
-        @{
+    \name Definition of the constraint
+    @{
      */
 
     /**
-        \brief Get the dimension of the constraint.
+    \brief Constructor
      */
-        virtual unsigned int dimension() const=0;
+    virtual CjrlGik3DOrientConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint, const matrix3& inTargetOrientation);
+            
+    /**
+    \brief Get the dimension of the constraint.
+     */
+    virtual unsigned int dimension() const=0;
 
     /**
-        \brief Get robot associated to the constraint.
+    \brief Get robot associated to the constraint.
      */
-        virtual const CjrlHumanoidDynamicRobot& robot()=0;
+    virtual const CjrlHumanoidDynamicRobot& robot()const =0 ;
 
     /**
-        \brief Set the joint associated to the constraint.
+    \brief Set the joint associated to the constraint.
      */
-        virtual void  joint(CjrlJoint* inJoint)=0;
+    virtual void  joint(CjrlJoint* inJoint)=0;
     /**
-        \brief Get the joint associated to the constraint.
+    \brief Get the joint associated to the constraint.
      */
-        virtual  CjrlJoint* joint()=0;
+    virtual  CjrlJoint* joint()=0;
     /**
-        \brief Set the target orientation for this constraint.
+    \brief Set the target orientation for this constraint.
      */
-        virtual void  targetOrientation(matrix3 inRot)=0;
+    virtual void  targetOrientation(const matrix3& inRot)=0;
     /**
-        \brief Get the point associated to the constraint (in joint's local frame).
+    \brief Get the point associated to the constraint (in joint's local frame).
      */
-        virtual const matrix3& targetOrientation()=0;
+    virtual const matrix3& targetOrientation()=0;
 
 
     /**
-        @}
-     */
-
-    /**
-        \name Computations
-        @{
-     */
-
-    /**
-        \brief Compute the value of the constraint.
-     */
-        virtual void computeValue() = 0;
-
-    /**
-        \brief Compute the Jacobian matrix of the constraint value wrt all (internal and external) configuration variables.
-        The contacts with the world are not taken into account
-     */
-        virtual void computeJacobianFromRoot() = 0;
-
-    /**
-        \brief Compute the Jacobian matrix of the constraint value wrt internal configuration variables.
-        The interaction with the environment is taken into account (for instance a foot on the ground).
-     */
-        virtual void computeJacobian() = 0;
-
-    /**
-        @}
+    @}
      */
 
     /**
-        \name Getting result of computations
-        @{
+    \name Computations
+    @{
      */
 
     /**
-        \brief Get the constraint value.
+    \brief Compute the value of the constraint.
      */
-        virtual ublas::vector<double> value() = 0;
+    virtual void computeValue() = 0;
 
     /**
-        \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
-        The contacts with the world are not taken into account
+    \brief Compute the Jacobian matrix of the constraint value wrt all (internal and external) configuration variables.
+    The contacts with the world are not taken into account
      */
-        virtual ublas::matrix<double> jacobianFromRoot() = 0;
+    virtual void computeJacobianFromRoot() = 0;
 
     /**
-        \brief Get the constraint Jacobian wrt internal configuration variables.
-        The interaction with the environment is taken into account (for instance a foot on the ground)
+    \brief Compute the Jacobian matrix of the constraint value wrt internal configuration variables.
+    The interaction with the environment is taken into account (for instance a foot on the ground).
      */
-        virtual ublas::matrix<double> jacobian() = 0;
+    virtual void computeJacobian() = 0;
 
     /**
-        @}
+    @}
      */
 
     /**
-        \brief Destructor
+    \name Getting result of computations
+    @{
      */
-        virtual ~CjrlGik3DOrientConstraint() =0;
+
+    /**
+    \brief Get the constraint value.
+     */
+    virtual ublas::vector<double> value() = 0;
+
+    /**
+    \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
+    The contacts with the world are not taken into account
+     */
+    virtual ublas::matrix<double> jacobianFromRoot() = 0;
+
+    /**
+    \brief Get the constraint Jacobian wrt internal configuration variables.
+    The interaction with the environment is taken into account (for instance a foot on the ground)
+     */
+    virtual ublas::matrix<double> jacobian() = 0;
+
+    /**
+    @}
+     */
+
+    /**
+    \brief Destructor
+     */
+    virtual ~CjrlGik3DOrientConstraint() =0;
 };
 
 #endif

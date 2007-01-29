@@ -5,32 +5,38 @@
 #include "jrlGik/jrlGikStateConstraint.h"
 
 /**
-   \brief Define the evolution of a state constraint along time
-*/
+\brief Define the evolution of a state constraint along time
+ */
 
-class CjrlGikMotionConstraint {
+class CjrlGikMotionConstraint
+{
 public:
-  /**
-     \brief Constructor 
-     \param inStartTime Lower bound of the definition interval of the motion constraint.
-     \param inEndTime Upper bound of the definition interval of the motion constraint.
-  */
-  virtual CjrlGikMotionConstraint(double inStartTime, double inEndTime) = 0;
 
-  /**
-     \brief Get state constraint at a given time.
-  */
-  virtual CjrlGikStateConstraint* stateConstraintAtTime(double inTime) = 0;
+    virtual CjrlGikMotionConstraint(double inSamplingPeriod);
+            
+    /**
+    \brief Append a state constraint at the end of the motion.
+     */
+    virtual void appendStateConstraint(const CjrlGikStateConstraint& inStateConstraint) = 0;
 
-  /**
-     \brief Get lower bound of definition interval.
-  */
-  virtual double startTime() = 0;
+    /**
+    \brief Get state constraint at a given time.
+     */
+    virtual CjrlGikStateConstraint* stateConstraintAtTime(double inTime) = 0;
 
-  /**
-     \brief Get upper bound of definition interval.
-  */
-  virtual double endTime() = 0;
+    /**
+    \brief Get lower bound of definition interval.
+     */
+    virtual double startTime() = 0;
+
+    /**
+    \brief Get upper bound of definition interval.
+     */
+    virtual double endTime() = 0;
+    /**
+    \brief Destructor
+     */
+    virtual ~CjrlGikMotionConstraint() =0;
 
 };
 

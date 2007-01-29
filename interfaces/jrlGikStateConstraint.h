@@ -12,29 +12,29 @@
 #include <boost/numeric/ublas/matrix.hpp>
 
 /**
-   \brief Specify a Constraint over the state of a humanoid robot.
+\brief Specify a Constraint over the state of a humanoid robot.
 */
 
 class CjrlGikStateConstraint
 {
 public:
     /**
-       \name Definition of the constraint
-       @{
+    \name Definition of the constraint
+    @{
     */
 
     /**
-       \brief Get the dimension of the constraint.
+    \brief Get associated robot
+     */
+    virtual const CjrlHumanoidDynamicRobot& robot() const = 0;
+    
+    /**
+    \brief Get the dimension of the constraint.
     */
     virtual unsigned int dimension() const = 0;
 
     /**
-       \brief Get robot associated to the constraint.
-    */
-    virtual const CjrlHumanoidDynamicRobot& robot() = 0;
-
-    /**
-       @}
+    @}
     */
 
     /**
@@ -90,7 +90,7 @@ public:
      */
 
     /**
-        \brief Destructor
+    \brief Destructor
     */
     virtual ~CjrlGikStateConstraint() = 0;
 };

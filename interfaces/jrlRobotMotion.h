@@ -3,50 +3,72 @@
 
 #include "jrlDynamicRobot.h"
 
+
+namespace ublas = boost::numeric::ublas;
+typedef  ublas::vector<double> uvector;
 /**
    \brief Defines the motion of a robot along time.
-
+ 
    The motion is defined over an interval of time.
-*/
+ */
 
-class CjrlRobotMotion {
+
+class CjrlRobotMotion
+{
 public:
-  /**
-     \brief Destructor.
-  */
-  virtual ~CjrlRobotMotion();
+    /**
+    \brief Destructor.
+     */
+    virtual ~CjrlRobotMotion();
 
-  /**
-     \brief Get lower bound of definition interval.
-  */
-  virtual double startTime() = 0;
+    /**
+    \brief Get lower bound of definition interval.
+     */
+    virtual double startTime() = 0;
 
-  /**
-     \brief Get upper bound of defintion interval.
-  */
-  virtual double endTime() = 0;
+    /**
+    \brief Get upper bound of defintion interval.
+     */
+    virtual double endTime() = 0;
 
-  /**
-     \brief Get robot for which motion is defined.
-  */
-  virtual const CjrlDynamicRobot& robot() = 0;
+    /**
+    \brief Get robot for which motion is defined.
+     */
+    virtual const CjrlDynamicRobot& robot() = 0;
 
-  /**
-     \brief Get Configuration at given time.
+    /**
+    \brief Get Configuration at given time.
 
-     \return The configuration vector.
-  */
-  virtual vector<double> configAtTime(double inTime) = 0;
+    \return The configuration vector.
+     */
+    virtual uvector configAtTime(double inTime) = 0;
 
-  /**
-     \brief Get velocity at given time.
-  */
-  virtual vector<double> velocityAtTime(double inTime) = 0;
+    /**
+    \brief Get velocity at given time.
+     */
+    virtual uvector velocityAtTime(double inTime) = 0;
 
-  /**
-     \brief Get Acceleration at given time.
-  */
-  virtual vector<double> accelerationAtTime(double inTime) = 0;
+    /**
+    \brief Get Acceleration at given time.
+     */
+    virtual uvector accelerationAtTime(double inTime) = 0;
+    
+    /**
+    \brief Append a new configuration at the end of the current motion
+     */
+    virtual void appendConfig(uvector) = 0;
+    
+    /**
+    \brief Set the sampling period
+     */
+    virtual void samplingPeriod(double inSamplingPeriod) = 0;
+    
+    /**
+    \brief Get the sampling period
+     */
+    virtual double samplingPeriod() = 0;
+
+
 };
 
 #endif
