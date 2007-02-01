@@ -5,8 +5,8 @@
  
 */
 
-#ifndef JRL_GIK_3DPOS_CONSTRAINT_H
-#define JRL_GIK_3DPOS_CONSTRAINT_H
+#ifndef JRL_GIK_6DFULL_CONSTRAINT_H
+#define JRL_GIK_6DFULL_CONSTRAINT_H
 
 #include "jrlGik/jrlGikStateConstraint.h"
 #include <boost/numeric/ublas/vector.hpp>
@@ -17,13 +17,14 @@ namespace ublas = boost::numeric::ublas;
 
 //temporary typedefs. They'll be deleted when having the proper linkage with the walkGen's algebra classes
 typedef std::vector<double> vector3;
+typedef ublas::matrix<double> matrix3;
 //temporary
 
 /**
-\brief Specify a 3D position constraint on a point of the robot.
+\brief Specify a position and orientation constraint on a body of the robot.
  */
 
-class CjrlGik3DPosConstraint:public CjrlGikStateConstraint
+class CjrlGik6DFullConstraint:public CjrlGikStateConstraint
 {
 public:
     /**
@@ -35,7 +36,7 @@ public:
     \brief Copy
      */
     virtual CjrlGikStateConstraint* clone() const =0;
-            
+
     /**
     \brief Get the dimension of the constraint.
      */
@@ -70,6 +71,14 @@ public:
     \brief Get the target point associated to the constraint (in world's frame).
      */
     virtual const vector3& worldTarget() = 0;
+    /**
+    \brief Set the target orientation for this constraint.
+     */
+    virtual void  targetOrientation(const matrix3& inRot)=0;
+    /**
+    \brief Get the point associated to the constraint (in joint's local frame).
+     */
+    virtual const matrix3& targetOrientation()=0;
 
     /**
     @}
@@ -129,7 +138,7 @@ public:
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik3DPosConstraint() = 0;
+    virtual ~CjrlGik6DFullConstraint() = 0;
 
 };
 

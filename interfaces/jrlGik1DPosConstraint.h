@@ -8,7 +8,7 @@
 #ifndef JRL_GIK_1DPOS_CONSTRAINT_H
 #define JRL_GIK_1DPOS_CONSTRAINT_H
 
-#include "jrlGik/jrlGikStateConstraint.h"
+#include "jrlGikStateConstraint.h"
 #include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 
@@ -32,18 +32,19 @@ The constraint is defined by the following equation:
  */
 
 
-class CjrlGik1DPosConstraint:CjrlGikStateConstraint
+class CjrlGik1DPosConstraint: public CjrlGikStateConstraint
 {
 public:
     /**
     \name Definition of the constraint
     @{
      */
-    
+
     /**
-    \brief Constructor
+    \brief Copy
      */
-    virtual CjrlGik1DPosConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint, const vector3& inLocalPoint,const vector3& inTargetPlanePoint, const vector3& inTargetPlaneNormal);
+    virtual CjrlGikStateConstraint* clone() const =0;
+    
     /**
     \brief Get the dimension of the constraint.
      */
@@ -52,7 +53,7 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual const CjrlHumanoidDynamicRobot& robot() = 0;
+    virtual CjrlHumanoidDynamicRobot& robot() = 0;
 
     /**
     \brief Set the joint associated to the constraint.
@@ -65,7 +66,7 @@ public:
     /**
     \brief Set the point \f$M\f$ associated to the constraint.
      */
-    virtual void  localPoint(vector3 inPoint) = 0;
+    virtual void  localPoint(const vector3& inPoint) = 0;
     /**
     \brief Get the point associated to the constraint (in joint's local frame).
      */
@@ -125,19 +126,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual ublas::vector<double> value() = 0;
+    virtual const ublas::vector<double>& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual ublas::matrix<double> jacobianFromRoot() = 0;
+    virtual const ublas::matrix<double>& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual ublas::matrix<double> jacobian() = 0;
+    virtual const ublas::matrix<double>& jacobian() = 0;
 
     /**
     @}
