@@ -8,7 +8,14 @@
 #include "jrlGik/jrlGikMotionConstraint.h"
 #include "jrlGik/jrlGikWholeBodyMotionPlanner.h"
 
-template <CjrlGik1DPosConstraint, CjrlGik2DOrientConstraint, CjrlGik3DOrientConstraint, CjrlGik3DPosConstraint, CjrlGikMotionConstraint, CjrlGikWholeBodyMotionPlanner>
+#include "hppGik/hppGik1DPosConstraint.h"
+#include "hppGik/hppGik3DPosConstraint.h"
+#include "hppGik/hppGik3DOrientConstraint.h"
+#include "hppGik/hppGik2DOrientConstraint.h"
+#include "hppGik/hppGikMotionConstraint.h"
+#include "hppGik/hppGikWhithinOneStepMotionPlanner.h"
+
+template <ChppGik1DPosConstraint, ChppGik2DOrientConstraint, ChppGik3DOrientConstraint, ChppGik3DPosConstraint, ChppGikMotionConstraint, ChppGikWholeBodyMotionPlanner>
 class CjrlGikObjectConstructor
 {
 public:
@@ -16,10 +23,11 @@ public:
     /**
     \brief Construct and return a pointer to a WholeBodyMotionPlanner.
     \param inRobot : associated robot.
+    \param inRobot : motion sampling period.
      */
-    static CjrlGikWholeBodyMotionPlanner* createWholeBodyMotionPlanner(const CjrlHumanoidDynamicRobot& inRobot)
+    static CjrlGikWholeBodyMotionPlanner* createWholeBodyMotionPlanner(CjrlHumanoidDynamicRobot& inRobot, double inSamplingPeriod)
     {
-        return new CjrlGikWholeBodyMotionPlanner(inRobot);
+        return new ChppGikWhithinOneStepMotionPlanner(inRobot, inSamplingPeriod);
     };
 
     /**
@@ -29,9 +37,9 @@ public:
     \param inLocalPoint : point given in inJoint's frame and to be moved to inWorldTarget.
     \param inTargetWorldPoint : target point in the work space.
      */
-    static CjrlGik3DPosConstraint* create3DPositionConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint, const vector3& inLocalPoint,const vector3& inTargetWorldPoint)
+    static CjrlGik3DPosConstraint* create3DPositionConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3& inLocalPoint,const vector3& inTargetWorldPoint)
     {
-        return new CjrlGik3DPosConstraint(inRobot, inJoint, inLocalPoint, inTargetWorldPoint);
+        return new ChppGik3DPosConstraint(inRobot, inJoint, inLocalPoint, inTargetWorldPoint);
     };
 
     /**
@@ -40,9 +48,9 @@ public:
     \param inJoint : associated joint.
     \param inTargetOrientation : target orientation matrix in world frame
      */
-    static CjrlGik3DOrientConstraint* create3DOrientationConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint, const matrix3& inTargetOrientation)
+    static CjrlGik3DOrientConstraint* create3DOrientationConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const matrix3& inTargetOrientation)
     {
-        return new CjrlGik3DOrientConstraint(inRobot, inJoint, inTargetOrientation);
+        return new ChppGik3DOrientConstraint(inRobot, inJoint, inTargetOrientation);
     };
 
     /**
@@ -52,9 +60,9 @@ public:
     \param inLocalVector : vector given in inJoint's frame and to be aligned with inTargetWorldVector.
     \param inTargetWorldVector : target point in the work space.
      */
-    static CjrlGik2DOrientConstraint* create2DOrientationConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint,, const vector3& inLocalVector,const vector3& inTargetWorldVector)
+    static CjrlGik2DOrientConstraint* create2DOrientationConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint,, const vector3& inLocalVector,const vector3& inTargetWorldVector)
     {
-        return new CjrlGik2DOrientConstraint(inRobot, inJoint,  inLocalVector, inTargetWorldVector);
+        return new ChppGik2DOrientConstraint(inRobot, inJoint,  inLocalVector, inTargetWorldVector);
     };
 
     /**
@@ -65,9 +73,9 @@ public:
     \param inTargetPlanePoint : a point of the target plane in world frame (see CjrlGik1DPosConstraint class definition for details).
     \param inTargetPlaneNormal : a normal vector of the plane in world frame (see CjrlGik1DPosConstraint class definition for details).
      */
-    static CjrlGik1DPosConstraint* create1DPositionConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint, const vector3& inLocalPoint,const vector3& inTargetPlanePoint, const vector3& inTargetPlaneNormal)
+    static CjrlGik1DPosConstraint* create1DPositionConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3& inLocalPoint,const vector3& inTargetPlanePoint, const vector3& inTargetPlaneNormal)
     {
-        return new CjrlGik1DPosConstraint(inRobot, inJoint, inLocalPoint, inTargetPlanePoint, inTargetPlaneNormal);
+        return new ChppGik1DPosConstraint(inRobot, inJoint, inLocalPoint, inTargetPlanePoint, inTargetPlaneNormal);
     };
     
     /**
@@ -76,7 +84,7 @@ public:
      */
     static CjrlGikMotionConstraint* createMotionConstraint(double inSamplingPeriod)
     {
-        return new CjrlGikMotionConstraint(inSamplingPeriod);
+        return new ChppGikMotionConstraint(inSamplingPeriod);
     };
 };
 

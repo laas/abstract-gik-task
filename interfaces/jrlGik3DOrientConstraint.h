@@ -22,7 +22,7 @@ typedef ublas::matrix<double> matrix3;
 \brief Specify a 3D orientation constraint on a body of the robot.
  */
 
-class CjrlGik3DOrientConstraint:CjrlGikStateConstraint
+class CjrlGik3DOrientConstraint:public CjrlGikStateConstraint
 {
 public:
     /**
@@ -31,10 +31,10 @@ public:
      */
 
     /**
-    \brief Constructor
+    \brief Copy
      */
-    virtual CjrlGik3DOrientConstraint(const CjrlHumanoidDynamicRobot& inRobot, const CjrlJoint& inJoint, const matrix3& inTargetOrientation);
-            
+    virtual CjrlGikStateConstraint* clone() const =0;
+    
     /**
     \brief Get the dimension of the constraint.
      */
@@ -43,7 +43,7 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual const CjrlHumanoidDynamicRobot& robot()const =0 ;
+    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
@@ -101,19 +101,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual ublas::vector<double> value() = 0;
+    virtual const ublas::vector<double>& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual ublas::matrix<double> jacobianFromRoot() = 0;
+    virtual const ublas::matrix<double>& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual ublas::matrix<double> jacobian() = 0;
+    virtual const ublas::matrix<double>& jacobian() = 0;
 
     /**
     @}

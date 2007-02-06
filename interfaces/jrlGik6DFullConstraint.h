@@ -5,34 +5,26 @@
  
 */
 
-#ifndef JRL_GIK_1DPOS_CONSTRAINT_H
-#define JRL_GIK_1DPOS_CONSTRAINT_H
+#ifndef JRL_GIK_6DFULL_CONSTRAINT_H
+#define JRL_GIK_6DFULL_CONSTRAINT_H
 
-#include "jrlGikStateConstraint.h"
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
+#include "jrlGik/jrlGikStateConstraint.h"
+#include "boost/numeric/ublas/vector.hpp"
+#include "boost/numeric/ublas/matrix.hpp"
 
 
 namespace ublas = boost::numeric::ublas;
 
 //temporary typedefs. They'll be deleted when having the proper linkage with the walkGen's algebra classes
 typedef std::vector<double> vector3;
+typedef ublas::matrix<double> matrix3;
 //temporary
 
 /**
-\brief Description of a constraint that limits the position of a point of the robot to a given plan.
- 
-The constraint is defined by the following equation:
-   \f{eqnarray*} \left(\vec{MT} | \vec{u}\right) = 0 \f}
-   where 
-   \li \f$ M\f$ is a point attached to the joint (specified in the joint's local frame).
-   \li \f$ T\f$ is a point in the environment,
-   \li \f$\vec{u}\f$ is a vector defining the normal to the task plane.
- 
+\brief Specify a position and orientation constraint on a body of the robot.
  */
 
-
-class CjrlGik1DPosConstraint: public CjrlGikStateConstraint
+class CjrlGik6DFullConstraint:public CjrlGikStateConstraint
 {
 public:
     /**
@@ -44,7 +36,7 @@ public:
     \brief Copy
      */
     virtual CjrlGikStateConstraint* clone() const =0;
-    
+
     /**
     \brief Get the dimension of the constraint.
      */
@@ -53,7 +45,7 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot& robot() = 0;
+    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
@@ -64,7 +56,7 @@ public:
      */
     virtual  CjrlJoint* joint() = 0;
     /**
-    \brief Set the point \f$M\f$ associated to the constraint.
+    \brief Set the point (in joint's local frame) associated to the constraint.
      */
     virtual void  localPoint(const vector3& inPoint) = 0;
     /**
@@ -72,21 +64,21 @@ public:
      */
     virtual const vector3& localPoint() = 0;
     /**
-    \brief Set a point \f$T\f$ of the target plane (in world's frame).
+    \brief Set the target point associated to the constraint (in world's frame).
      */
-    virtual void  worldPlanePoint(const vector3& inPoint) = 0;
+    virtual void  worldTarget(const vector3& inPoint) = 0;
     /**
-    \brief Get the point of the defined plane (in world's frame).
+    \brief Get the target point associated to the constraint (in world's frame).
      */
-    virtual const vector3& worldPlanePoint() = 0;
+    virtual const vector3& worldTarget() = 0;
     /**
-    \brief Set the normal \f$\vec{u}\f$ of the target plane (in world's frame).
+    \brief Set the target orientation for this constraint.
      */
-    virtual void  worldPlaneNormal(const vector3& inPoint) = 0;
+    virtual void  targetOrientation(const matrix3& inRot)=0;
     /**
-    \brief Get the normal of the defined plane (in world's frame).
+    \brief Get the point associated to the constraint (in joint's local frame).
      */
-    virtual const vector3& worldPlaneNormal() = 0;
+    virtual const matrix3& targetOrientation()=0;
 
     /**
     @}
@@ -96,7 +88,7 @@ public:
     \name Computations
     @{
      */
-
+    
     /**
     \brief Compute the value of the constraint.
      */
@@ -143,11 +135,10 @@ public:
     /**
     @}
      */
-
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik1DPosConstraint() = 0;
+    virtual ~CjrlGik6DFullConstraint() = 0;
 
 };
 
