@@ -9,8 +9,8 @@
 #define JRL_GIK_1DPOS_CONSTRAINT_H
 
 #include "jrlGik/jrlGikStateConstraint.h"
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
+#include "boost/numeric/ublas/vector.hpp"
+#include "boost/numeric/ublas/matrix.hpp"
 
 
 namespace ublas = boost::numeric::ublas;

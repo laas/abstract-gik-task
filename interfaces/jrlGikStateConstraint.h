@@ -9,7 +9,7 @@
 #define JRL_STATE_CONSTRAINT_H
 
 #include "jrlRobot/jrlHumanoidDynamicRobot.h"
-#include <boost/numeric/ublas/matrix.hpp>
+#include "boost/numeric/ublas/matrix.hpp"
 
 /**
 \brief Specify a Constraint over the state of a humanoid robot.

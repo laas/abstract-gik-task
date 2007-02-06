@@ -1,0 +1,25 @@
+
+Installation instructions
+*************************
+
+untar the package
+  tar xvzf abstractgiktask-x.y.tar.gz
+  cd abstractgiktask-x.y
+
+Configuration
+-------------
+
+  mkdir build
+  cd build
+  ../configure 
+
+Compilation
+-----------
+  make
+
+Installation
+------------
+  make install
+
+
+
