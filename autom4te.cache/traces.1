@@ -385,26 +385,35 @@ configure.ac:15: _AC_PROG_LIBTOOL is required by...
 aclocal.m4:61: AC_PROG_LIBTOOL is expanded from...
 configure.ac:15: the top level])
 m4trace:configure.ac:15: -1- AC_SUBST([LIBTOOL])
-m4trace:configure.ac:17: -1- AC_PROG_CXX
-m4trace:configure.ac:17: -1- AC_SUBST([CXX])
-m4trace:configure.ac:17: -1- AC_SUBST([CXXFLAGS])
-m4trace:configure.ac:17: -1- AC_SUBST([LDFLAGS])
-m4trace:configure.ac:17: -1- AC_SUBST([CPPFLAGS])
-m4trace:configure.ac:17: -1- AC_SUBST([CXX])
-m4trace:configure.ac:17: -1- AC_SUBST([ac_ct_CXX])
-m4trace:configure.ac:17: -1- AC_SUBST([CXXDEPMODE], [depmode=$am_cv_CXX_dependencies_compiler_type])
-m4trace:configure.ac:17: -1- AM_CONDITIONAL([am__fastdepCXX], [
+m4trace:configure.ac:17: -1- m4_pattern_forbid([^_?PKG_[A-Z_]+$])
+m4trace:configure.ac:17: -1- m4_pattern_allow([^PKG_CONFIG(_PATH)?$])
+m4trace:configure.ac:17: -1- AC_SUBST([PKG_CONFIG])
+m4trace:configure.ac:17: -1- AC_SUBST([PKG_CONFIG], [$ac_cv_path_PKG_CONFIG])
+m4trace:configure.ac:17: -1- AC_SUBST([ac_pt_PKG_CONFIG], [$ac_cv_path_ac_pt_PKG_CONFIG])
+m4trace:configure.ac:17: -1- AC_SUBST([ABS_ROBOT_DYN_CFLAGS])
+m4trace:configure.ac:17: -1- AC_SUBST([ABS_ROBOT_DYN_LIBS])
+m4trace:configure.ac:18: -1- AC_SUBST([ABS_ROBOT_DYN_CFLAGS])
+m4trace:configure.ac:19: -1- AC_SUBST([ABS_ROBOT_DYN_LIBS])
+m4trace:configure.ac:21: -1- AC_PROG_CXX
+m4trace:configure.ac:21: -1- AC_SUBST([CXX])
+m4trace:configure.ac:21: -1- AC_SUBST([CXXFLAGS])
+m4trace:configure.ac:21: -1- AC_SUBST([LDFLAGS])
+m4trace:configure.ac:21: -1- AC_SUBST([CPPFLAGS])
+m4trace:configure.ac:21: -1- AC_SUBST([CXX])
+m4trace:configure.ac:21: -1- AC_SUBST([ac_ct_CXX])
+m4trace:configure.ac:21: -1- AC_SUBST([CXXDEPMODE], [depmode=$am_cv_CXX_dependencies_compiler_type])
+m4trace:configure.ac:21: -1- AM_CONDITIONAL([am__fastdepCXX], [
   test "x$enable_dependency_tracking" != xno \
   && test "$am_cv_CXX_dependencies_compiler_type" = gcc3])
-m4trace:configure.ac:17: -1- AC_SUBST([am__fastdepCXX_TRUE])
-m4trace:configure.ac:17: -1- AC_SUBST([am__fastdepCXX_FALSE])
-m4trace:configure.ac:24: -1- AC_CONFIG_FILES([Makefile
+m4trace:configure.ac:21: -1- AC_SUBST([am__fastdepCXX_TRUE])
+m4trace:configure.ac:21: -1- AC_SUBST([am__fastdepCXX_FALSE])
+m4trace:configure.ac:28: -1- AC_CONFIG_FILES([Makefile
 	interfaces/Makefile
 	documentation/Makefile
 	documentation/gikTask.dox
 	abstractGikTask.pc
 ])
-m4trace:configure.ac:24: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
+m4trace:configure.ac:28: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 You should run autoupdate.], [])
-m4trace:configure.ac:24: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
-m4trace:configure.ac:24: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
+m4trace:configure.ac:28: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
+m4trace:configure.ac:28: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])

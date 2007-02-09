@@ -6,4 +6,5 @@ includedir=@includedir@
 Name: @PACKAGE@
 Description: Abstract interface for Generalized Inverse Kinematics Planning
 Version: @VERSION@
-Cflags: -I${includedir}/gikTask
+Requires: abstractRobotDynamics >= 1.0
+Cflags: -I${includedir}/gikTask 
