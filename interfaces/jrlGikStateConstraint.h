@@ -8,14 +8,13 @@
 #ifndef JRL_STATE_CONSTRAINT_H
 #define JRL_STATE_CONSTRAINT_H
 
-#include "jrlRobot/jrlHumanoidDynamicRobot.h"
-#include "boost/numeric/ublas/matrix.hpp"
+#include "jrlHumanoidDynamicRobot.h"
 
 /**
 \brief Specify a Constraint over the state of a humanoid robot.
 */
 
-
+template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
 class CjrlGikStateConstraint
 {
 public:
@@ -30,7 +29,7 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint* clone() const =0;
+    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
 
     /**
     \name Definition of the constraint
@@ -40,7 +39,7 @@ public:
     /**
     \brief Get associated robot
      */
-    virtual CjrlHumanoidDynamicRobot& robot() = 0;
+    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() = 0;
 
     /**
     \brief Get the dimension of the constraint.
@@ -85,19 +84,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual const ublas::vector<double>& value() = 0;
+    virtual const Vn& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual const ublas::matrix<double>& jacobianFromRoot() = 0;
+    virtual const Mnxp& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual const ublas::matrix<double>& jacobian() = 0;
+    virtual const Mnxp& jacobian() = 0;
 
     /**
     @}

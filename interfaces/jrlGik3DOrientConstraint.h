@@ -8,21 +8,14 @@
 #ifndef JRL_GIK_3DORIENT_CONSTRAINT_H
 #define JRL_GIK_3DORIENT_CONSTRAINT_H
 
-#include "jrlGik/jrlGikStateConstraint.h"
-#include "boost/numeric/ublas/vector.hpp"
-#include "boost/numeric/ublas/matrix.hpp"
-
-
-namespace ublas = boost::numeric::ublas;
-//temporary typedefs. They'll be deleted when having the proper linkage with the walkGen's algebra classes
-typedef ublas::matrix<double> matrix3;
-//temporary
+#include "jrlGikStateConstraint.h"
 
 /**
 \brief Specify a 3D orientation constraint on a body of the robot.
  */
 
-class CjrlGik3DOrientConstraint:public CjrlGikStateConstraint
+template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
+class CjrlGik3DOrientConstraint:public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -33,8 +26,8 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint* clone() const =0;
-    
+    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+
     /**
     \brief Get the dimension of the constraint.
      */
@@ -43,24 +36,24 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
+    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint* inJoint)=0;
+    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint)=0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint* joint()=0;
+    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint()=0;
     /**
     \brief Set the target orientation for this constraint.
      */
-    virtual void  targetOrientation(const matrix3& inRot)=0;
+    virtual void  targetOrientation(const M3x3& inRot)=0;
     /**
     \brief Get the point associated to the constraint (in joint's local frame).
      */
-    virtual const matrix3& targetOrientation()=0;
+    virtual const M3x3& targetOrientation()=0;
 
 
     /**
@@ -101,19 +94,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual const ublas::vector<double>& value() = 0;
+    virtual const Vn& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual const ublas::matrix<double>& jacobianFromRoot() = 0;
+    virtual const Mnxp& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual const ublas::matrix<double>& jacobian() = 0;
+    virtual const Mnxp& jacobian() = 0;
 
     /**
     @}

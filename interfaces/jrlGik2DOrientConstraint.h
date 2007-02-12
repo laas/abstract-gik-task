@@ -8,16 +8,7 @@
 #ifndef JRL_GIK_2DORIENT_CONSTRAINT_H
 #define JRL_GIK_2DORIENT_CONSTRAINT_H
 
-#include "jrlGik/jrlGikStateConstraint.h"
-#include "boost/numeric/ublas/vector.hpp"
-#include "boost/numeric/ublas/matrix.hpp"
-
-
-namespace ublas = boost::numeric::ublas;
-
-//temporary typedefs. They'll be deleted when having the proper linkage with the walkGen's algebra classes
-typedef std::vector<double> vector3;
-//temporary
+#include "jrlGikStateConstraint.h"
 
 /**
 \brief Specify a 2D orientation constraint on a body of the robot.
@@ -29,7 +20,8 @@ The constraint is defined by the following equation:
    \li \f$\vec{R}_T\f$ is a vector in the global frame.
  */
 
-class CjrlGik2DOrientConstraint:public CjrlGikStateConstraint
+template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
+class CjrlGik2DOrientConstraint:public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -40,7 +32,7 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint* clone() const =0;
+    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
     
     /**
     \brief Get the dimension of the constraint.
@@ -50,32 +42,32 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
+    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint* inJoint)=0;
+    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint)=0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint* joint()=0;
+    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint()=0;
     /**
     \brief Set the vector \f$\vec{R}\f$ associated to the constraint  (in joint's local frame).
      */
-    virtual void  localVector(const vector3& inVector)=0;
+    virtual void  localVector(const V3& inVector)=0;
     /**
     \brief Get the vector associated to the constraint (in joint's local frame).
      */
-    virtual const vector3& localVector()=0;
+    virtual const V3& localVector()=0;
     /**
     \brief Set the target vector \f$\vec{R}_T\f$ associated to the constraint.
      */
-    virtual void  targetVector(const vector3& inVector)=0;
+    virtual void  targetVector(const V3& inVector)=0;
     /**
     \brief Get the target vector associated to the constraint.
      */
-    virtual const vector3& targetVector()=0;
+    virtual const V3& targetVector()=0;
 
 
     /**
@@ -116,19 +108,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual const ublas::vector<double>& value() = 0;
+    virtual const Vn& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual const ublas::matrix<double>& jacobianFromRoot() = 0;
+    virtual const Mnxp& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual const ublas::matrix<double>& jacobian() = 0;
+    virtual const Mnxp& jacobian() = 0;
 
     /**
     @}

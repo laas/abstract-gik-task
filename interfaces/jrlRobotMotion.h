@@ -3,9 +3,6 @@
 
 #include "jrlDynamicRobot.h"
 
-
-namespace ublas = boost::numeric::ublas;
-typedef  ublas::vector<double> uvector;
 /**
    \brief Defines the motion of a robot along time.
  
@@ -13,13 +10,14 @@ typedef  ublas::vector<double> uvector;
  */
 
 
+template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
 class CjrlRobotMotion
 {
 public:
     /**
     \brief Destructor.
      */
-    virtual ~CjrlRobotMotion();
+    virtual ~CjrlRobotMotion() =0;
 
     /**
     \brief Get lower bound of definition interval.
@@ -34,29 +32,29 @@ public:
     /**
     \brief Get robot for which motion is defined.
      */
-    virtual const CjrlDynamicRobot& robot() = 0;
+    virtual const CjrlDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() = 0;
 
     /**
     \brief Get Configuration at given time.
 
     \return The configuration vector.
      */
-    virtual uvector configAtTime(double inTime) = 0;
+    virtual Vn configAtTime(double inTime) = 0;
 
     /**
     \brief Get velocity at given time.
      */
-    virtual uvector velocityAtTime(double inTime) = 0;
+    virtual V3 velocityAtTime(double inTime) = 0;
 
     /**
     \brief Get Acceleration at given time.
      */
-    virtual uvector accelerationAtTime(double inTime) = 0;
+    virtual V3 accelerationAtTime(double inTime) = 0;
     
     /**
     \brief Append a new configuration at the end of the current motion (must be in the implementation )
      */
-    virtual void appendConfig(const uvector&) = 0;
+    virtual void appendConfig(const Vn&) = 0;
     
     /**
     \brief Clear stored motion

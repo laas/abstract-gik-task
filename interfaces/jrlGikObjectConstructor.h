@@ -1,19 +1,19 @@
 #ifndef JRL_GIK_OBJECT_CONSTRUCTOR
 #define JRL_GIK_OBJECT_CONSTRUCTOR
 
-#include "jrlGik/jrlGik1DPosConstraint.h"
-#include "jrlGik/jrlGik3DPosConstraint.h"
-#include "jrlGik/jrlGik3DOrientConstraint.h"
-#include "jrlGik/jrlGik2DOrientConstraint.h"
-#include "jrlGik/jrlGikMotionConstraint.h"
-#include "jrlGik/jrlGikWholeBodyMotionPlanner.h"
+#include "jrlGik1DPosConstraint.h"
+#include "jrlGik3DPosConstraint.h"
+#include "jrlGik3DOrientConstraint.h"
+#include "jrlGik2DOrientConstraint.h"
+#include "jrlGikMotionConstraint.h"
+#include "jrlGikWholeBodyMotionPlanner.h"
 
-#include "hppGik/hppGik1DPosConstraint.h"
-#include "hppGik/hppGik3DPosConstraint.h"
-#include "hppGik/hppGik3DOrientConstraint.h"
-#include "hppGik/hppGik2DOrientConstraint.h"
-#include "hppGik/hppGikMotionConstraint.h"
-#include "hppGik/hppGikWhithinOneStepMotionPlanner.h"
+#include "hppGik1DPosConstraint.h"
+#include "hppGik3DPosConstraint.h"
+#include "hppGik3DOrientConstraint.h"
+#include "hppGik2DOrientConstraint.h"
+#include "hppGikMotionConstraint.h"
+#include "hppGikWhithinOneStepMotionPlanner.h"
 
 template <ChppGik1DPosConstraint, ChppGik2DOrientConstraint, ChppGik3DOrientConstraint, ChppGik3DPosConstraint, ChppGikMotionConstraint, ChppGikWholeBodyMotionPlanner>
 class CjrlGikObjectConstructor
