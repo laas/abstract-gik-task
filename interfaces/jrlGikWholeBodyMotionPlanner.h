@@ -65,7 +65,7 @@ class CjrlGikWholeBodyMotionPlanner
     /**
         \brief Destructor
      */
-        virtual ~CjrlGikWithinOneStepMotionPlanner() =0;
+        virtual ~CjrlGikWholeBodyMotionPlanner() =0;
     
 };
 
