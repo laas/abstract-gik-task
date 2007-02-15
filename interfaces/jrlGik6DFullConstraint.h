@@ -8,7 +8,7 @@
 #ifndef JRL_GIK_6DFULL_CONSTRAINT_H
 #define JRL_GIK_6DFULL_CONSTRAINT_H
 
-#include "jrlGik/jrlGikStateConstraint.h"
+#include "jrlGikStateConstraint.h"
 
 /**
 \brief Specify a position and orientation constraint on a body of the robot.
