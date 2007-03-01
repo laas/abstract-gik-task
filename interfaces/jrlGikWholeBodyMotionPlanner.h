@@ -46,12 +46,14 @@ class CjrlGikWholeBodyMotionPlanner
      */
     
     /**
-        \brief Solve the task of going half-sitting stance described by the position inHalfSittingConfig. solutionMotion() is to be called afterwards to retrieve the computed motion.
+        \brief Plan a motion to realize the given configuration.
+        The solution retrieved through solutionMotion()
      */
-        virtual bool goHalfSitting(const Vn& inHalfSittingConfig) =0;
+        virtual bool goToConfiguration(const Vn& inRobotConfiguration) =0;
         
     /**
-        \brief Compute a motion complying with the constraints contained in whole body motion task.
+        \brief Compute a motion to realize the constraints contained in whole body motion task.
+        The solution retrieved through solutionMotion()
      */
         virtual bool solve() = 0;
 

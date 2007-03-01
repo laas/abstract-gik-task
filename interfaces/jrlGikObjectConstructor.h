@@ -82,7 +82,7 @@ public:
     \brief Construct and return a pointer to a Motion constraint.
     \param inSamplingPeriod : the interval of time between two successsive state constraints.
      */
-    virtual static CjrlGikMotionConstraint<TPLT>* createMotionConstraint(double inSamplingPeriod) =0;
+    virtual static CjrlGikMotionConstraint<TPLT>* createMotionConstraint(double inSamplingPeriod, double inStartTime) =0;
 };
 
 #endif
