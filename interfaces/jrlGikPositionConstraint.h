@@ -5,16 +5,16 @@
  
 */
 
-#ifndef JRL_GIK_6DFULL_CONSTRAINT_H
-#define JRL_GIK_6DFULL_CONSTRAINT_H
+#ifndef JRL_GIK_POSITION_CONSTRAINT_H
+#define JRL_GIK_POSITION_CONSTRAINT_H
 
-#include "jrlGikStateConstraint.h"
+#include "jrlGikJointStateConstraint.h"
 
 /**
-\brief Specify a position and orientation constraint on a body of the robot.
+\brief Constraint on a point in a joint to be at a 3D position in the world frame
  */
 template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGik6DFullConstraint:public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+        class CjrlGikPositionConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -61,14 +61,6 @@ public:
     \brief Get the target point associated to the constraint (in world's frame).
      */
     virtual const V3& worldTarget() = 0;
-    /**
-    \brief Set the target orientation for this constraint.
-     */
-    virtual void  targetOrientation(const M3x3& inRot)=0;
-    /**
-    \brief Get the point associated to the constraint (in joint's local frame).
-     */
-    virtual const M3x3& targetOrientation()=0;
 
     /**
     @}
@@ -128,7 +120,7 @@ public:
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik6DFullConstraint() = 0;
+    virtual ~CjrlGikPositionConstraint() = 0;
 
 };
 

@@ -5,13 +5,13 @@
  
 */
 
-#ifndef JRL_GIK_2DORIENT_CONSTRAINT_H
-#define JRL_GIK_2DORIENT_CONSTRAINT_H
+#ifndef JRL_GIK_PARALLEL_CONSTRAINT_H
+#define JRL_GIK_PARALLEL_CONSTRAINT_H
 
-#include "jrlGikStateConstraint.h"
+#include "jrlGikJointStateConstraint.h"
 
 /**
-\brief Specify a 2D orientation constraint on a body of the robot.
+\brief Constraint on a vector in a joint frame to be parallel to a vector given in world frame.
         
 The constraint is defined by the following equation:
    \f{eqnarray*}   \vec{R}\times \vec{R}_T = 0   \f}
@@ -21,7 +21,7 @@ The constraint is defined by the following equation:
  */
 
 template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGik2DOrientConstraint:public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+class CjrlGikParallelConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -33,7 +33,7 @@ public:
     \brief Copy
      */
     virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
-    
+
     /**
     \brief Get the dimension of the constraint.
      */
@@ -129,7 +129,7 @@ public:
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik2DOrientConstraint() =0;
+    virtual ~CjrlGikParallelConstraint() =0;
 
 };
 

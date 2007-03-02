@@ -5,16 +5,17 @@
  
 */
 
-#ifndef JRL_GIK_3DPOS_CONSTRAINT_H
-#define JRL_GIK_3DPOS_CONSTRAINT_H
+#ifndef JRL_GIK_ROTATION_CONSTRAINT_H
+#define JRL_GIK_ROTATION_CONSTRAINT_H
 
-#include "jrlGikStateConstraint.h"
+#include "jrlGikJointStateConstraint.h"
 
 /**
-\brief Specify a 3D position constraint on a point of the robot.
+\brief Constraint on the orientation matrix of a joint to change to a given orientation matrix
  */
+
 template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGik3DPosConstraint:public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+        class CjrlGikRotationConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -30,7 +31,7 @@ public:
     /**
     \brief Get the dimension of the constraint.
      */
-    virtual unsigned int dimension() const = 0;
+    virtual unsigned int dimension() const=0;
 
     /**
     \brief Get robot associated to the constraint.
@@ -40,27 +41,20 @@ public:
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint) = 0;
+    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint)=0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint() = 0;
+    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint()=0;
     /**
-    \brief Set the point (in joint's local frame) associated to the constraint.
+    \brief Set the target orientation for this constraint.
      */
-    virtual void  localPoint(const V3& inPoint) = 0;
+    virtual void  targetOrientation(const M3x3& inRot)=0;
     /**
     \brief Get the point associated to the constraint (in joint's local frame).
      */
-    virtual const V3& localPoint() = 0;
-    /**
-    \brief Set the target point associated to the constraint (in world's frame).
-     */
-    virtual void  worldTarget(const V3& inPoint) = 0;
-    /**
-    \brief Get the target point associated to the constraint (in world's frame).
-     */
-    virtual const V3& worldTarget() = 0;
+    virtual const M3x3& targetOrientation()=0;
+
 
     /**
     @}
@@ -117,11 +111,11 @@ public:
     /**
     @}
      */
+
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik3DPosConstraint() = 0;
-
+    virtual ~CjrlGikRotationConstraint() =0;
 };
 
 #endif

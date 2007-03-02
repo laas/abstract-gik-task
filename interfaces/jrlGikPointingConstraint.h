@@ -1,30 +1,13 @@
-/*
-        Research carried out within the scope of the Associated International Laboratory: Joint Japanese-French Robotics Laboratory (JRL)
- 
-        Authors: Florent Lamiraux and Oussama Kanoun (LAAS-CNRS)
- 
-*/
+#ifndef JRL_GIK_POINTING_CONSTRAINT_H
+#define JRL_GIK_POINTING_CONSTRAINT_H
 
-#ifndef JRL_GIK_1DPOS_CONSTRAINT_H
-#define JRL_GIK_1DPOS_CONSTRAINT_H
-
-#include "jrlGikStateConstraint.h"
-
+#include "jrlGikJointStateConstraint.h"
 
 /**
-\brief Description of a constraint that limits the position of a point of the robot to a given plan.
- 
-The constraint is defined by the following equation:
-   \f{eqnarray*} \left(\vec{MT} | \vec{u}\right) = 0 \f}
-   where 
-   \li \f$ M\f$ is a point attached to the joint (specified in the joint's local frame).
-   \li \f$ T\f$ is a point in the environment,
-   \li \f$\vec{u}\f$ is a vector defining the normal to the task plane.
- 
+\brief Constraint on a line segment attached to a body to be aligned with a given point in the world frame. The line segment is defined by an origin point and a vector both given in the body's local frame.
  */
-
 template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGik1DPosConstraint: public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+class CjrlGikPointingConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -36,7 +19,7 @@ public:
     \brief Copy
      */
     virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
-    
+
     /**
     \brief Get the dimension of the constraint.
      */
@@ -45,7 +28,7 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() = 0;
+    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
@@ -56,37 +39,36 @@ public:
      */
     virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint() = 0;
     /**
-    \brief Set the point \f$M\f$ associated to the constraint.
+    \brief Set the origin of the pointing vector in joint's local frame (illelgal operation for gaze constraint).
      */
-    virtual void  localPoint(const V3& inPoint) = 0;
+    virtual void  localOrigin(const V3& inPoint) = 0;
     /**
-    \brief Get the point associated to the constraint (in joint's local frame).
+    \brief Get the origin of the pointing vector.
      */
-    virtual const V3& localPoint() = 0;
+    virtual const V3& localOrigin() = 0;
     /**
-    \brief Set a point \f$T\f$ of the target plane (in world's frame).
+    \brief Set the pointing vector in joint's local frame (illelgal operation for gaze constraint).
      */
-    virtual void  worldPlanePoint(const V3& inPoint) = 0;
+    virtual void  localVector(const V3& inPoint) = 0;
     /**
-    \brief Get the point of the defined plane (in world's frame).
+    \brief Set the pointing vector in joint's local frame
      */
-    virtual const V3& worldPlanePoint() = 0;
+    virtual const V3& localVector() = 0;
     /**
-    \brief Set the normal \f$\vec{u}\f$ of the target plane (in world's frame).
+    \brief Set the target point associated to the constraint (in world's frame).
      */
-    virtual void  worldPlaneNormal(const V3& inPoint) = 0;
+    virtual void  worldTarget(const V3& inPoint) = 0;
     /**
-    \brief Get the normal of the defined plane (in world's frame).
+    \brief Get the target point associated to the constraint (in world's frame).
      */
-    virtual const V3& worldPlaneNormal() = 0;
-
+    virtual const V3& worldTarget() = 0;
     /**
-    @}
+        @}
      */
 
     /**
     \name Computations
-    @{
+        @{
      */
 
     /**
@@ -135,11 +117,10 @@ public:
     /**
     @}
      */
-
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik1DPosConstraint() = 0;
+    virtual ~CjrlGikPointingConstraint() = 0;
 
 };
 

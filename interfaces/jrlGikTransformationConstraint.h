@@ -5,17 +5,16 @@
  
 */
 
-#ifndef JRL_GIK_3DORIENT_CONSTRAINT_H
-#define JRL_GIK_3DORIENT_CONSTRAINT_H
+#ifndef JRL_GIK_TRANSFORMATION_CONSTRAINT_H
+#define JRL_GIK_TRANSFORMATION_CONSTRAINT_H
 
-#include "jrlGikStateConstraint.h"
+#include "jrlGikJointStateConstraint.h"
 
 /**
-\brief Specify a 3D orientation constraint on a body of the robot.
+\brief Specify a position and orientation constraint on a body of the robot.
  */
-
 template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGik3DOrientConstraint:public CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+class CjrlGikTransformationConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
 {
 public:
     /**
@@ -31,7 +30,7 @@ public:
     /**
     \brief Get the dimension of the constraint.
      */
-    virtual unsigned int dimension() const=0;
+    virtual unsigned int dimension() const = 0;
 
     /**
     \brief Get robot associated to the constraint.
@@ -41,11 +40,27 @@ public:
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint)=0;
+    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint) = 0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint()=0;
+    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint() = 0;
+    /**
+    \brief Set the point (in joint's local frame) associated to the constraint.
+     */
+    virtual void  localPoint(const V3& inPoint) = 0;
+    /**
+    \brief Get the point associated to the constraint (in joint's local frame).
+     */
+    virtual const V3& localPoint() = 0;
+    /**
+    \brief Set the target point associated to the constraint (in world's frame).
+     */
+    virtual void  worldTarget(const V3& inPoint) = 0;
+    /**
+    \brief Get the target point associated to the constraint (in world's frame).
+     */
+    virtual const V3& worldTarget() = 0;
     /**
     \brief Set the target orientation for this constraint.
      */
@@ -54,7 +69,6 @@ public:
     \brief Get the point associated to the constraint (in joint's local frame).
      */
     virtual const M3x3& targetOrientation()=0;
-
 
     /**
     @}
@@ -111,11 +125,11 @@ public:
     /**
     @}
      */
-
     /**
     \brief Destructor
      */
-    virtual ~CjrlGik3DOrientConstraint() =0;
+    virtual ~CjrlGikTransformationConstraint() = 0;
+
 };
 
 #endif
