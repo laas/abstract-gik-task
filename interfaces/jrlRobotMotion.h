@@ -42,12 +42,12 @@ public:
     /**
     \brief Get velocity at given time.
      */
-    virtual bool velocityAtTime(double inTime, V3& outVector3) = 0;
+    virtual bool velocityAtTime(double inTime, Vn& outVector) = 0;
 
     /**
     \brief Get Acceleration at given time.
      */
-    virtual bool accelerationAtTime(double inTime, V3& outVector3) = 0;
+    virtual bool accelerationAtTime(double inTime, Vn& outVector) = 0;
 
 };
 
