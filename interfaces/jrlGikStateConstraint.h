@@ -14,7 +14,7 @@
 \brief Specify a Constraint over the state of a humanoid robot.
 */
 
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
+
 class CjrlGikStateConstraint
 {
 public:
@@ -29,7 +29,7 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+    virtual CjrlGikStateConstraint* clone() const =0;
 
     /**
     \name Definition of the constraint
@@ -39,7 +39,7 @@ public:
     /**
     \brief Get associated robot
      */
-    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() = 0;
+    virtual CjrlHumanoidDynamicRobot& robot() = 0;
 
     /**
     \brief Get the dimension of the constraint.

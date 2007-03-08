@@ -10,7 +10,7 @@
  */
 
 
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
+
 class CjrlRobotMotion
 {
 public:
@@ -32,7 +32,7 @@ public:
     /**
     \brief Get robot for which motion is defined.
      */
-    virtual const CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() = 0;
+    virtual const CjrlHumanoidDynamicRobot& robot() = 0;
 
     /**
     \brief Get Configuration at given time.

@@ -14,8 +14,8 @@
 \brief Constraint on the orientation matrix of a joint to change to a given orientation matrix
  */
 
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-        class CjrlGikRotationConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+
+        class CjrlGikRotationConstraint:public CjrlGikJointStateConstraint
 {
 public:
     /**
@@ -26,7 +26,7 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+    virtual CjrlGikStateConstraint* clone() const =0;
 
     /**
     \brief Get the dimension of the constraint.
@@ -36,16 +36,16 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
+    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint)=0;
+    virtual void  joint(CjrlJoint* inJoint)=0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint()=0;
+    virtual  CjrlJoint* joint()=0;
     /**
     \brief Set the target orientation for this constraint.
      */

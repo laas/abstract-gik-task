@@ -6,8 +6,8 @@
 /**
 \brief This is a PointingConstraint whose joint is the humanoid robot's gaze joint. Only the target point in the world is provided.
  */
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+
+class CjrlGikGazeConstraint:public CjrlGikPointingConstraint
 {
     public:
     /**
@@ -18,7 +18,7 @@ class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V
     /**
         \brief Copy
      */
-        virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+        virtual CjrlGikStateConstraint* clone() const =0;
 
     /**
         \brief Get the dimension of the constraint.
@@ -28,16 +28,16 @@ class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V
     /**
         \brief Get robot associated to the constraint.
      */
-        virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
+        virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
         \brief Set the joint associated to the constraint (illelgal operation for gaze constraint).
      */
-        void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint) {};
+        void  joint(CjrlJoint* inJoint) {};
     /**
         \brief Get the joint associated to the constraint (should return the robot gaze joint).
      */
-        virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint() = 0;
+        virtual  CjrlJoint* joint() = 0;
     /**
         \brief Set the origin of the pointing vector in joint's local frame (illelgal operation for gaze constraint).
      */
