@@ -60,7 +60,11 @@ class CjrlGikWholeBodyMotionPlanner
     /**
         \brief Get resulting joint motion of robot.
      */
+<<<<<<< master
         virtual const CjrlRobotMotion& solutionMotion() const = 0;
+=======
+        virtual const CjrlRobotMotion& solutionMotion() = 0;
+>>>>>>> origin
     /**
         @}
      */

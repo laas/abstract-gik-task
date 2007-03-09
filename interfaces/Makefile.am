@@ -7,16 +7,16 @@
 
 gikTaskdir = $(includedir)/gikTask
 gikTask_HEADERS = \
-	jrlGikPlaneConstraint.h \
-	jrlGikParallelConstraint.h \
-	jrlGikRotationConstraint.h \
-	jrlGikPositionConstraint.h \
-	jrlGikTransformationConstraint.h \
-	jrlGikMotionConstraint.h \
-	jrlGikObjectConstructor.h \
-	jrlGikStateConstraint.h \
-	jrlGikPointingConstraint.h \
 	jrlGikGazeConstraint.h \
 	jrlGikJointStateConstraint.h \
+	jrlGikMotionConstraint.h \
+	jrlGikObjectConstructor.h \
+	jrlGikParallelConstraint.h \
+	jrlGikPlaneConstraint.h \
+	jrlGikPointingConstraint.h \
+	jrlGikPositionConstraint.h \
+	jrlGikRotationConstraint.h \
+	jrlGikStateConstraint.h \
+	jrlGikTransformationConstraint.h \
 	jrlGikWholeBodyMotionPlanner.h \
 	jrlRobotMotion.h 
