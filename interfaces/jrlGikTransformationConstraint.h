@@ -13,8 +13,8 @@
 /**
 \brief Specify a position and orientation constraint on a body of the robot.
  */
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGikTransformationConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+
+class CjrlGikTransformationConstraint:public CjrlGikJointStateConstraint
 {
 public:
     /**
@@ -25,7 +25,7 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+    virtual CjrlGikStateConstraint* clone() const =0;
 
     /**
     \brief Get the dimension of the constraint.
@@ -35,40 +35,40 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
+    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint) = 0;
+    virtual void  joint(CjrlJoint* inJoint) = 0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint() = 0;
+    virtual  CjrlJoint* joint() = 0;
     /**
     \brief Set the point (in joint's local frame) associated to the constraint.
      */
-    virtual void  localPoint(const V3& inPoint) = 0;
+    virtual void  localPoint(const vector3d& inPoint) = 0;
     /**
     \brief Get the point associated to the constraint (in joint's local frame).
      */
-    virtual const V3& localPoint() = 0;
+    virtual const vector3d& localPoint() = 0;
     /**
     \brief Set the target point associated to the constraint (in world's frame).
      */
-    virtual void  worldTarget(const V3& inPoint) = 0;
+    virtual void  worldTarget(const vector3d& inPoint) = 0;
     /**
     \brief Get the target point associated to the constraint (in world's frame).
      */
-    virtual const V3& worldTarget() = 0;
+    virtual const vector3d& worldTarget() = 0;
     /**
     \brief Set the target orientation for this constraint.
      */
-    virtual void  targetOrientation(const M3x3& inRot)=0;
+    virtual void  targetOrientation(const matrix3d& inRot)=0;
     /**
     \brief Get the point associated to the constraint (in joint's local frame).
      */
-    virtual const M3x3& targetOrientation()=0;
+    virtual const matrix3d& targetOrientation()=0;
 
     /**
     @}
@@ -108,19 +108,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual const Vn& value() = 0;
+    virtual const vectorN& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual const Mnxp& jacobianFromRoot() = 0;
+    virtual const matrixNxP& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual const Mnxp& jacobian() = 0;
+    virtual const matrixNxP& jacobian() = 0;
 
     /**
     @}

@@ -20,8 +20,8 @@ The constraint is defined by the following equation:
    \li \f$\vec{R}_T\f$ is a vector in the global frame.
  */
 
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGikParallelConstraint:public CjrlGikJointStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+
+class CjrlGikParallelConstraint:public CjrlGikJointStateConstraint
 {
 public:
     /**
@@ -32,7 +32,7 @@ public:
     /**
     \brief Copy
      */
-    virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+    virtual CjrlGikStateConstraint* clone() const =0;
 
     /**
     \brief Get the dimension of the constraint.
@@ -42,32 +42,32 @@ public:
     /**
     \brief Get robot associated to the constraint.
      */
-    virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
+    virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
     \brief Set the joint associated to the constraint.
      */
-    virtual void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint)=0;
+    virtual void  joint(CjrlJoint* inJoint)=0;
     /**
     \brief Get the joint associated to the constraint.
      */
-    virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint()=0;
+    virtual  CjrlJoint* joint()=0;
     /**
     \brief Set the vector \f$\vec{R}\f$ associated to the constraint  (in joint's local frame).
      */
-    virtual void  localVector(const V3& inVector)=0;
+    virtual void  localVector(const vector3d& inVector)=0;
     /**
     \brief Get the vector associated to the constraint (in joint's local frame).
      */
-    virtual const V3& localVector()=0;
+    virtual const vector3d& localVector()=0;
     /**
     \brief Set the target vector \f$\vec{R}_T\f$ associated to the constraint.
      */
-    virtual void  targetVector(const V3& inVector)=0;
+    virtual void  targetVector(const vector3d& inVector)=0;
     /**
     \brief Get the target vector associated to the constraint.
      */
-    virtual const V3& targetVector()=0;
+    virtual const vector3d& targetVector()=0;
 
 
     /**
@@ -108,19 +108,19 @@ public:
     /**
     \brief Get the constraint value.
      */
-    virtual const Vn& value() = 0;
+    virtual const vectorN& value() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
     The contacts with the world are not taken into account
      */
-    virtual const Mnxp& jacobianFromRoot() = 0;
+    virtual const matrixNxP& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-    virtual const Mnxp& jacobian() = 0;
+    virtual const matrixNxP& jacobian() = 0;
 
     /**
     @}

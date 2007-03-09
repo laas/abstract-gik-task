@@ -6,8 +6,7 @@
 /**
 \brief This is a PointingConstraint whose joint is the humanoid robot's gaze joint. Only the target point in the world is provided.
  */
-template <class Mnxp,class M4x4,class M3x3,class Vn,class V3>
-class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V3>
+class CjrlGikGazeConstraint:public CjrlGikPointingConstraint
 {
     public:
     /**
@@ -18,7 +17,7 @@ class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V
     /**
         \brief Copy
      */
-        virtual CjrlGikStateConstraint<Mnxp,M4x4,M3x3,Vn,V3>* clone() const =0;
+        virtual CjrlGikStateConstraint* clone() const =0;
 
     /**
         \brief Get the dimension of the constraint.
@@ -28,40 +27,40 @@ class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V
     /**
         \brief Get robot associated to the constraint.
      */
-        virtual CjrlHumanoidDynamicRobot<Mnxp,M4x4,M3x3,Vn,V3>& robot() =0 ;
+        virtual CjrlHumanoidDynamicRobot& robot() =0 ;
 
     /**
         \brief Set the joint associated to the constraint (illelgal operation for gaze constraint).
      */
-        void  joint(CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* inJoint) {};
+        void  joint(CjrlJoint* inJoint) {};
     /**
         \brief Get the joint associated to the constraint (should return the robot gaze joint).
      */
-        virtual  CjrlJoint<Mnxp,M4x4,M3x3,Vn,V3>* joint() = 0;
+        virtual  CjrlJoint* joint() = 0;
     /**
         \brief Set the origin of the pointing vector in joint's local frame (illelgal operation for gaze constraint).
      */
-        virtual void  localOrigin(const V3& inPoint) = 0;
+        virtual void  localOrigin(const vector3d& inPoint) = 0;
     /**
         \brief Get the origin of the pointing vector.
      */
-        virtual const V3& localOrigin() = 0;
+        virtual const vector3d& localOrigin() = 0;
     /**
         \brief Set the pointing vector in joint's local frame (illelgal operation for gaze constraint).
      */
-        void  localVector(const V3& inPoint) {};
+        void  localVector(const vector3d& inPoint) {};
     /**
         \brief Set the pointing vector in joint's local frame
      */
-        virtual const V3& localVector() = 0;    
+        virtual const vector3d& localVector() = 0;    
     /**
         \brief Set the target point associated to the constraint (in world's frame).
      */
-        virtual void  worldTarget(const V3& inPoint) = 0;
+        virtual void  worldTarget(const vector3d& inPoint) = 0;
     /**
         \brief Get the target point associated to the constraint (in world's frame).
      */
-        virtual const V3& worldTarget() = 0;
+        virtual const vector3d& worldTarget() = 0;
 
     /**
         @}
@@ -101,19 +100,19 @@ class CjrlGikGazeConstraint:public CjrlGikPointingConstraint<Mnxp,M4x4,M3x3,Vn,V
     /**
         \brief Get the constraint value.
      */
-        virtual const Vn& value() = 0;
+        virtual const vectorN& value() = 0;
 
     /**
         \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
         The contacts with the world are not taken into account
      */
-        virtual const Mnxp& jacobianFromRoot() = 0;
+        virtual const matrixNxP& jacobianFromRoot() = 0;
 
     /**
         \brief Get the constraint Jacobian wrt internal configuration variables.
         The interaction with the environment is taken into account (for instance a foot on the ground)
      */
-        virtual const Mnxp& jacobian() = 0;
+        virtual const matrixNxP& jacobian() = 0;
 
     /**
         @}
