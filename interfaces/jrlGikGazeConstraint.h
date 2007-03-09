@@ -6,12 +6,9 @@
 /**
 \brief This is a PointingConstraint whose joint is the humanoid robot's gaze joint. Only the target point in the world is provided.
  */
-<<<<<<< master
-class CjrlGikGazeConstraint:public CjrlGikPointingConstraint
-=======
+
 
 class CjrlGikGazeConstraint:public CjrlGikPointingConstraint
->>>>>>> origin
 {
     public:
     /**
