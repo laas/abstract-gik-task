@@ -17,7 +17,7 @@ public:
     /**
     \brief Destructor.
      */
-    virtual ~CjrlRobotMotion() =0;
+    virtual ~CjrlRobotMotion() {}
 
     /**
     \brief Get lower bound of definition interval.

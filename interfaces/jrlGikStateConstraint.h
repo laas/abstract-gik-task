@@ -24,7 +24,8 @@ public:
     /**
     \brief Destructor
      */
-    virtual ~CjrlGikStateConstraint() = 0;
+    virtual ~CjrlGikStateConstraint()
+    {}
 
     /**
     \brief Copy

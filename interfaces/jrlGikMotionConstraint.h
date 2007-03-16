@@ -21,7 +21,7 @@ public:
     \brief Set lower bound of definition interval.
      */
     virtual void startTime(double inStartTime)=0;
-    
+
     /**
     \brief Get lower bound of definition interval.
      */
@@ -34,9 +34,9 @@ public:
     /**
     \brief Destructor
      */
-    virtual ~CjrlGikMotionConstraint() =0;
+    virtual ~CjrlGikMotionConstraint()
+    {}
 
 };
-
 
 #endif

@@ -68,7 +68,7 @@ public:
     /**
         \brief Destructor
      */
-    virtual ~CjrlGikWholeBodyMotionPlanner() =0;
+    virtual ~CjrlGikWholeBodyMotionPlanner() {}
 
 };
 
