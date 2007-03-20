@@ -62,12 +62,6 @@ public:
     virtual void computeValue() = 0;
 
     /**
-    \brief Compute the Jacobian matrix of the constraint value wrt all (internal and external) configuration variables.
-    The contacts with the world are not taken into account
-     */
-    virtual void computeJacobianFromRoot() = 0;
-
-    /**
     \brief Compute the Jacobian matrix of the constraint value wrt internal configuration variables.
     The interaction with the environment is taken into account (for instance a foot on the ground).
      */
@@ -86,12 +80,6 @@ public:
     \brief Get the constraint value.
      */
     virtual const vectorN& value() = 0;
-
-    /**
-    \brief Get the constraint Jacobian wrt all (internal and external) configuration variables.
-    The contacts with the world are not taken into account
-     */
-    virtual const matrixNxP& jacobianFromRoot() = 0;
 
     /**
     \brief Get the constraint Jacobian wrt internal configuration variables.
