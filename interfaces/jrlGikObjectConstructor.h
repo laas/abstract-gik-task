@@ -60,9 +60,9 @@ public:
         \param inJoint : associated joint.
         \param inGazeTarget : the point in world frame where the robot is to look.
      */
-    static CjrlGikGazeConstraint* createGazeConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inGazeTarget)
+    static CjrlGikGazeConstraint* createGazeConstraint(CjrlHumanoidDynamicRobot& inRobot, const vector3d& inGazeTarget)
     {
-        return new CGazeConstraint(inRobot, inJoint,inGazeTarget);
+        return new CGazeConstraint(inRobot, inGazeTarget);
     }
     /**
         \brief Construct and return a pointer to a CjrlGikTransformationConstraint
