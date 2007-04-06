@@ -46,12 +46,6 @@ public:
      */
 
     /**
-        \brief Plan a motion to realize the given configuration.
-        The solution retrieved through solutionMotion()
-     */
-    virtual bool goToConfiguration(const vectorN& inRobotConfiguration) =0;
-
-    /**
         \brief Compute a motion to realize the constraints contained in whole body motion task.
         The solution retrieved through solutionMotion()
      */
