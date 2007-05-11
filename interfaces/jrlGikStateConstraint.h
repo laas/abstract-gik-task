@@ -57,6 +57,11 @@ public:
      */
 
     /**
+    \brief Get a binary vector which size matches the robot cnfiguration's, where an element with value 1 indicates that the corresponding degree of freedom can modify the value of this constraint, and an element with value 0 cannot.
+     */
+    virtual vectorN& influencingDofs() = 0;
+    
+    /**
     \brief Compute the value of the constraint.
      */
     virtual void computeValue() = 0;
