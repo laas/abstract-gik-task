@@ -22,12 +22,12 @@ public:
     /**
     \brief Get lower bound of definition interval.
      */
-    virtual double startTime() = 0;
+    virtual double startTime() const = 0 ;
 
     /**
     \brief Get upper bound of defintion interval.
      */
-    virtual double endTime() = 0;
+    virtual double endTime() const = 0;
 
     /**
     \brief Get robot for which motion is defined.
@@ -37,17 +37,17 @@ public:
     /**
     \brief Get Configuration at given time.
      */
-    virtual bool configAtTime(double inTime, vectorN& outConfig) = 0;
+    virtual bool configAtTime(double inTime, vectorN& outConfig) const = 0;
 
     /**
     \brief Get velocity at given time.
      */
-    virtual bool velocityAtTime(double inTime, vectorN& outVector) = 0;
+    virtual bool velocityAtTime(double inTime, vectorN& outVector) const = 0;
 
     /**
     \brief Get Acceleration at given time.
      */
-    virtual bool accelerationAtTime(double inTime, vectorN& outVector) = 0;
+    virtual bool accelerationAtTime(double inTime, vectorN& outVector) const = 0;
 
 };
 

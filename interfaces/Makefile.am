@@ -18,5 +18,4 @@ gikTask_HEADERS = \
 	jrlGikRotationConstraint.h \
 	jrlGikStateConstraint.h \
 	jrlGikTransformationConstraint.h \
-	jrlGikWholeBodyMotionPlanner.h \
 	jrlRobotMotion.h 

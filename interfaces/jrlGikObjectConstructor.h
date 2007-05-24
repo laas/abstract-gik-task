@@ -8,26 +8,16 @@
 #include "jrlGikParallelConstraint.h"
 #include "jrlGikPlaneConstraint.h"
 #include "jrlGikMotionConstraint.h"
-#include "jrlGikWholeBodyMotionPlanner.h"
 
 
 
-template < class CPlaneConstraint, class CParallelConstraint, class CRotationConstraint, class CPositionConstraint, class CTransformationConstraint, class CPointingConstraint, class CGazeConstraint, class CWholeBodyMotionPlanner>
+
+template < class CPlaneConstraint, class CParallelConstraint, class CRotationConstraint, class CPositionConstraint, class CTransformationConstraint, class CPointingConstraint, class CGazeConstraint>
 
 
 class CjrlGikObjectConstructor
 {
 public:
-
-    /**
-        \brief Construct and return a pointer to a CjrlGikWholeBodyMotionPlanner.
-        \param inRobot : associated robot.
-        \param inRobot : motion sampling period.
-     */
-    static CjrlGikWholeBodyMotionPlanner* createWholeBodyMotionPlanner(CjrlHumanoidDynamicRobot& inRobot, double inSamplingPeriod)
-    {
-        return new CWholeBodyMotionPlanner(inRobot, inSamplingPeriod);
-    }
 
     /**
         \brief Construct and return a pointer to a CjrlGikPositionConstraint
