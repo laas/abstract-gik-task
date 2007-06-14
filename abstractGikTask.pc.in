@@ -7,4 +7,4 @@ Name: @PACKAGE@
 Description: Abstract interface for Generalized Inverse Kinematics Planning
 Version: @VERSION@
 Requires: abstractRobotDynamics >= 1.0
-Cflags: -I${includedir}/gikTask 
+Cflags: -I${includedir}
