@@ -14,9 +14,7 @@ EXTRA_DIST = \
 	additionalDoc/gikTask.h \
 	pictures/HRP2.jpg 
 
-all: html
-
-install:
+install-data-hook: html
 	mkdir -p $(gikTaskDocdir)
 	$(INSTALL_DATA) html/* $(gikTaskDocdir)
 	mkdir -p $(gikTaskDocdir)/pictures
