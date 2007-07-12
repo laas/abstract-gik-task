@@ -19,6 +19,8 @@ install-data-hook: html
 	$(INSTALL_DATA) html/* $(gikTaskDocdir)
 	mkdir -p $(gikTaskDocdir)/pictures
 	$(INSTALL_DATA) $(srcdir)/pictures/* $(gikTaskDocdir)/pictures
+	mkdir -p $(datadir)/doc/doxytag
+	$(INSTALL_DATA) abstractGikTask.doxytag $(datadir)/doc/doxytag
 
 html: gikTask.dox
 	doxygen $<
