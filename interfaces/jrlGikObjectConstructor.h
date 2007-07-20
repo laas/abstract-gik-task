@@ -26,7 +26,7 @@ public:
         \param inLocalPoint : point given in inJoint's frame and to be moved to inTargetWorldPoint.
         \param inTargetWorldPoint : target point in the work space.
      */
-    static CjrlGikPositionConstraint* createPositionConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetWorldPoint)
+    static CjrlGikPositionConstraint* createPositionConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetWorldPoint)
     {
         return new CPositionConstraint(inRobot, inJoint, inLocalPoint, inTargetWorldPoint);
     }
@@ -39,7 +39,7 @@ public:
         \param inLocalVector : the pointing vector (body local frame)
         \param inTargetWorldPoint : the point in world frame with which the segment defined by the origin and the pointing vector is to be aligned.
      */
-    static CjrlGikPointingConstraint* createPointingConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalOrigin, const vector3d& inLocalVector, const vector3d& inTargetWorldPoint)
+    static CjrlGikPointingConstraint* createPointingConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalOrigin, const vector3d& inLocalVector, const vector3d& inTargetWorldPoint)
     {
         return new CPointingConstraint(inRobot, inJoint, inLocalOrigin,inLocalVector, inTargetWorldPoint);
     }
@@ -47,7 +47,6 @@ public:
     /**
         \brief Construct and return a pointer to a CjrlGikGazeConstraint
         \param inRobot : associated robot.
-        \param inJoint : associated joint.
         \param inGazeTarget : the point in world frame where the robot is to look.
      */
     static CjrlGikGazeConstraint* createGazeConstraint(CjrlHumanoidDynamicRobot& inRobot, const vector3d& inGazeTarget)
@@ -62,7 +61,7 @@ public:
         \param inTargetWorldPoint : target point in the work space.
         \param inTargetOrientation : target orientation matrix in world frame
      */
-    static CjrlGikTransformationConstraint* createTransformationConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetWorldPoint,const matrix3d& inTargetOrientation)
+    static CjrlGikTransformationConstraint* createTransformationConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetWorldPoint,const matrix3d& inTargetOrientation)
     {
         return new CTransformationConstraint(inRobot, inJoint, inLocalPoint, inTargetWorldPoint, inTargetOrientation);
     }
@@ -74,7 +73,7 @@ public:
         \param inLocalPoint : point given in joint frame.
         \param inTargetWorldTransformation : target transformation.
      */
-    static CjrlGikTransformationConstraint* createTransformationConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const matrix4d& inTargetWorldTransformation)
+    static CjrlGikTransformationConstraint* createTransformationConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const matrix4d& inTargetWorldTransformation)
     {
         return new CTransformationConstraint( inRobot, inJoint, inLocalPoint,  inTargetWorldTransformation);
     }
@@ -85,7 +84,7 @@ public:
         \param inJoint : associated joint.
         \param inTargetOrientation : target orientation matrix in world frame
      */
-    static CjrlGikRotationConstraint* createRotationConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const matrix3d& inTargetOrientation)
+    static CjrlGikRotationConstraint* createRotationConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const matrix3d& inTargetOrientation)
     {
         return new CRotationConstraint(inRobot, inJoint, inTargetOrientation);
     }
@@ -97,7 +96,7 @@ public:
         \param inLocalVector : vector given in inJoint's frame and to be aligned with inTargetWorldVector.
         \param inTargetWorldVector : target point in the work space.
      */
-    static CjrlGikParallelConstraint* createParallelConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalVector,const vector3d& inTargetWorldVector)
+    static CjrlGikParallelConstraint* createParallelConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalVector,const vector3d& inTargetWorldVector)
     {
         return new CParallelConstraint(inRobot, inJoint,  inLocalVector, inTargetWorldVector);
     }
@@ -110,7 +109,7 @@ public:
         \param inTargetPlanePoint : a point of the target plane in world frame
         \param inTargetPlaneNormal : a normal vector of the plane in world frame
      */
-    static CjrlGikPlaneConstraint* createPlaneConstraint(CjrlHumanoidDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetPlanePoint, const vector3d& inTargetPlaneNormal)
+    static CjrlGikPlaneConstraint* createPlaneConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetPlanePoint, const vector3d& inTargetPlaneNormal)
     {
         return new CPlaneConstraint(inRobot, inJoint, inLocalPoint, inTargetPlanePoint, inTargetPlaneNormal);
     }

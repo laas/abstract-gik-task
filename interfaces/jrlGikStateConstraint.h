@@ -40,7 +40,7 @@ public:
     /**
     \brief Get associated robot
      */
-    virtual CjrlHumanoidDynamicRobot& robot() = 0;
+    virtual CjrlDynamicRobot& robot() = 0;
 
     /**
     \brief Get the dimension of the constraint.
