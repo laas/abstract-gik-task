@@ -1,0 +1,6 @@
+Makefile.in
+aclocal.m4
+autom4te.cache
+configure
+documentation/Makefile.in
+interfaces/Makefile.in
