@@ -6,5 +6,5 @@ includedir=@includedir@
 Name: @PACKAGE@
 Description: Abstract interface for Generalized Inverse Kinematics Planning
 Version: @VERSION@
-Requires: abstractRobotDynamics >= 1.0
+Requires: @DYN_REQD@
 Cflags: -I${includedir}
