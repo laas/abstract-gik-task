@@ -8,6 +8,7 @@
 gikTaskdir = $(includedir)/gikTask
 gikTask_HEADERS = \
 	jrlGikGazeConstraint.h \
+	jrlGikComConstraint.h \
 	jrlGikJointStateConstraint.h \
 	jrlGikMotionConstraint.h \
 	jrlGikObjectConstructor.h \

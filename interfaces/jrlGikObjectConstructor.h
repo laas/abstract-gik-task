@@ -8,11 +8,12 @@
 #include "jrlGikParallelConstraint.h"
 #include "jrlGikPlaneConstraint.h"
 #include "jrlGikMotionConstraint.h"
+#include "jrlGikComConstraint.h"
 
 
 
 
-template < class CPlaneConstraint, class CParallelConstraint, class CRotationConstraint, class CPositionConstraint, class CTransformationConstraint, class CPointingConstraint, class CGazeConstraint>
+template < class CPlaneConstraint, class CParallelConstraint, class CRotationConstraint, class CPositionConstraint, class CTransformationConstraint, class CPointingConstraint, class CGazeConstraint, class CComConstraint>
 
 
 class CjrlGikObjectConstructor
@@ -112,6 +113,18 @@ public:
     static CjrlGikPlaneConstraint* createPlaneConstraint(CjrlDynamicRobot& inRobot, CjrlJoint& inJoint, const vector3d& inLocalPoint,const vector3d& inTargetPlanePoint, const vector3d& inTargetPlaneNormal)
     {
         return new CPlaneConstraint(inRobot, inJoint, inLocalPoint, inTargetPlanePoint, inTargetPlaneNormal);
+    }
+    
+    /**
+    \brief Construct and return a pointer to a CjrlGikComConstraint
+    \param inRobot : associated robot.
+    \param inX : target world X coordinate for the center of mass
+    \param inY : target world Y coordinate for the center of mass
+    It is possible to set a 3D CoM target after the object is created through the method targetXYZ()
+     */
+    static CjrlGikComConstraint* createComConstraint(CjrlDynamicRobot& inRobot, double inX, double inY)
+    {
+        return new CComConstraint(inRobot, inX, inY);
     }
 };
 
