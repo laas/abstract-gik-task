@@ -1,4 +1,8 @@
-2007/10/10
+$Id: ChangeLog 2007/11/08 14:54:31 mallet $
+
+jrl-interface-giktask version 1.2 released November 8, 2007
+	
+	3. Added a ComConstraint and updated ObjectConstructor accordingly.
 	2. Correction in documentation.
 
 jrl-interface-giktask version 1.1 released August 30, 2007

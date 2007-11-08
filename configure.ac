@@ -7,7 +7,7 @@ dnl
 dnl   Author: Florent Lamiraux LAAS-CNRS
 dnl
 
-AC_INIT([abstractGikTask],[1.1],[openrobots@laas.fr])
+AC_INIT([abstractGikTask],[1.2],[openrobots@laas.fr])
 AC_PREREQ(2.59)
 
 AM_INIT_AUTOMAKE([foreign no-define])
