@@ -14,7 +14,7 @@
 \brief Specify a position and orientation constraint on a body of the robot.
  */
 
-class CjrlGikTransformationConstraint:public CjrlGikJointStateConstraint
+class CjrlGikTransformationConstraint:virtual public CjrlGikJointStateConstraint
 {
 public:
   

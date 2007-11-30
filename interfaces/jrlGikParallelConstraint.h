@@ -21,7 +21,7 @@ The constraint is defined by the following equation:
  */
 
 
-class CjrlGikParallelConstraint:public CjrlGikJointStateConstraint
+class CjrlGikParallelConstraint:virtual public CjrlGikJointStateConstraint
 {
 public:
     /**

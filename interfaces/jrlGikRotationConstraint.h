@@ -13,7 +13,7 @@
 /**
 \brief Constraint on the orientation matrix of a joint to change to a given orientation matrix
  */
-class CjrlGikRotationConstraint:public CjrlGikJointStateConstraint
+class CjrlGikRotationConstraint:virtual public CjrlGikJointStateConstraint
 {
 public:
 

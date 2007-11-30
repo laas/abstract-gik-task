@@ -24,7 +24,7 @@ The constraint is defined by the following equation:
  */
 
 
-class CjrlGikPlaneConstraint:public CjrlGikJointStateConstraint
+class CjrlGikPlaneConstraint:virtual public CjrlGikJointStateConstraint
 {
 public:
  

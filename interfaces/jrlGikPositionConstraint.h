@@ -13,7 +13,7 @@
 /**
 \brief Constraint on a point in a joint to be at a 3D position in the world frame
  */
-class CjrlGikPositionConstraint:public CjrlGikJointStateConstraint
+class CjrlGikPositionConstraint:virtual public CjrlGikJointStateConstraint
 {
 public:
 
