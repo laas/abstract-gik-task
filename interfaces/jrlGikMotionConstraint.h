@@ -13,6 +13,11 @@ class CjrlGikMotionConstraint
 public:
 
     /**
+    \brief Clone constructor
+    */
+    virtual CjrlGikMotionConstraint* clone() const =0;
+    
+    /**
     \brief Get state constraint at a given time.
      */
     virtual CjrlGikStateConstraint* stateConstraintAtTime(double inTime) = 0;

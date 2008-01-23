@@ -39,9 +39,17 @@ public:
      */
     virtual void  targetOrientation(const matrix3d& inRot)=0;
     /**
-    \brief Get the point associated to the constraint (in joint's local frame).
+    \brief Get the target orientation.
      */
     virtual const matrix3d& targetOrientation()=0;
+    /**
+    \brief Set the target transformation for this constraint.
+     */
+    virtual void  targetTransformation(const matrix4d& inTransform)=0;
+    /**
+    \brief Get the target transformation
+     */
+    virtual const matrix4d& targetTransformation()=0;
 };
 
 #endif
