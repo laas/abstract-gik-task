@@ -8,7 +8,7 @@
  */
 
 
-class CjrlGikJointStateConstraint: public CjrlGikStateConstraint
+class CjrlGikJointStateConstraint: virtual public CjrlGikStateConstraint
 {
 public:
     /**

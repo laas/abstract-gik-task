@@ -19,9 +19,6 @@ class CjrlGikStateConstraint
 {
 public:
     /**
-    @}
-     */
-    /**
     \brief Destructor
      */
     virtual ~CjrlGikStateConstraint()

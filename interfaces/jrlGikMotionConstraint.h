@@ -11,7 +11,11 @@
 class CjrlGikMotionConstraint
 {
 public:
-
+    /**
+    \brief Get a pointer to associated robot
+     */
+    virtual CjrlDynamicRobot* robot() = 0;
+    
     /**
     \brief Clone constructor
     */
