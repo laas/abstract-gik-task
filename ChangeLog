@@ -1,5 +1,10 @@
 $Id: ChangeLog 2008/02/18 18:13:33 mallet $
 
+jrl-interface-giktask version 1.4 released March 26, 2008
+
+	8. Added robot() method in CjrlGikMotionConstraint
+	7. Fix virtual inheritance in CjrlGikJoitStateConstraint
+	
 jrl-interface-giktask version 1.3 released February 18, 2008
 
 	6. Added clone constructor to CjrlGikMotionConstraint
