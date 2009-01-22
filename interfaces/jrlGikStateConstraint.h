@@ -57,22 +57,26 @@ public:
     \brief Compute a binary vector whose size matches the robot cnfiguration's, where an element with value 1 indicates that the corresponding degree of freedom can modify the value of this constraint, and an element with value 0 cannot.
      */
     virtual void computeInfluencingDofs() = 0;
-    
+
     /**
     \brief Get the influencing dofs
      */
     virtual vectorN& influencingDofs() = 0;
-    
+
     /**
     \brief Compute the value of the constraint.
      */
     virtual void computeValue() = 0;
 
     /**
-    \brief Compute the Jacobian matrix of the constraint value wrt internal configuration variables.
-    The interaction with the environment is taken into account (for instance a foot on the ground).
+    \brief Compute the Jacobian of the constraint with respect to the internal degrees of freedom and to a selected root joint (see method CjrlGikStateConstraint::jacobianRoot())
      */
     virtual void computeJacobian() = 0;
+
+    /**
+    \brief Select the joint in the robot that serves as root for computation of jacobians.
+    */
+    virtual void jacobianRoot(CjrlJoint& inJoint) =0 ;
 
     /**
     @}
@@ -89,15 +93,13 @@ public:
     virtual const vectorN& value() = 0;
 
     /**
-    \brief Get the constraint Jacobian wrt internal configuration variables.
-    The interaction with the environment is taken into account (for instance a foot on the ground)
+    \brief Get the constraint Jacobian
      */
     virtual const matrixNxP& jacobian() = 0;
 
     /**
     @}
      */
-
 };
 
 

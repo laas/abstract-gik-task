@@ -7,13 +7,13 @@ dnl
 dnl   Author: Florent Lamiraux LAAS-CNRS
 dnl
 
-AC_INIT([abstractGikTask],[1.4.99],[openrobots@laas.fr])
+AC_INIT([abstractGikTask],[2.0.99],[openrobots@laas.fr])
 AC_PREREQ(2.59)
 
 AM_INIT_AUTOMAKE([foreign no-define])
 AC_PROG_INSTALL
 
-define(dyn_reqd, [abstractRobotDynamics >= 1.8])
+define(dyn_reqd, [abstractRobotDynamics >= 1.11])
 AC_SUBST(DYN_REQD, "dyn_reqd")
 PKG_CHECK_MODULES(ABS_ROBOT_DYN, dyn_reqd)
 ABS_ROBOT_DYN_PREFIX=`$PKG_CONFIG abstractRobotDynamics --variable=prefix`
