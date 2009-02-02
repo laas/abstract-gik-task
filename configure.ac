@@ -18,6 +18,9 @@ AC_SUBST(DYN_REQD, "dyn_reqd")
 PKG_CHECK_MODULES(ABS_ROBOT_DYN, dyn_reqd)
 ABS_ROBOT_DYN_PREFIX=`$PKG_CONFIG abstractRobotDynamics --variable=prefix`
 AC_SUBST(ABS_ROBOT_DYN_PREFIX)
+AC_SUBST(ABS_ROBOT_DYN_CFLAGS)
+AC_SUBST(ABS_ROBOT_DYN_LIBS)
+
 
 AC_OUTPUT(Makefile
 	interfaces/Makefile

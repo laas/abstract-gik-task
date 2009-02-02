@@ -9,4 +9,5 @@ Name: @PACKAGE@
 Description: Abstract interface for Generalized Inverse Kinematics Planning
 Version: @VERSION@
 Requires: @DYN_REQD@
-Cflags: -I${includedir}
+Libs: -L${libdir} @ABS_ROBOT_DYN_LIBS@
+Cflags: -I${includedir} @ABS_ROBOT_DYN_CFLAGS@
