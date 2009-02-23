@@ -14,8 +14,6 @@
 /**
 \brief Specify a linear constraint over the state of a humanoid robot.
 */
-
-
 class CjrlGikStateConstraint: virtual public CjrlLinearConstraint
 {
 public:

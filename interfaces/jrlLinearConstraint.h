@@ -5,11 +5,8 @@
 
 */
 
-#ifndef JRL_STATE_CONSTRAINT_H
-#define JRL_STATE_CONSTRAINT_H
-
-#include "robotDynamics/jrlHumanoidDynamicRobot.h"
-#include "gikTask/jrlLinearConstraint.h"
+#ifndef JRL_LINEAR_CONSTRAINT_H
+#define JRL_LINEAR_CONSTRAINT_H
 
 /**
 \brief A linear constraint is an object that returns a m-by-n matrix and an m-vector defining a linear system of equality of inequality constraints (determined by context).
@@ -36,7 +33,7 @@ public:
     */
     virtual ~CjrlLinearConstraint()
     {}
-}
-;
+    ;
+};
 
-#endif
+#end
