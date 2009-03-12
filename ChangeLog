@@ -2,6 +2,11 @@
 	    share/doc/abstractGikTask/html
 	9. Fix path to abstractRobotDynamics.doxytag
 
+jrl-interface-giktask version 2.4 released February 26, 2009
+
+	10.Created class CjrlLinearConstraint as base of CjrlGikStteConstraint, containing methods dimension(), jacobian() and value().
+	9. Added the method jacobianRoot() in CjrlGikStateConstraint
+
 jrl-interface-giktask version 1.4 released March 26, 2008
 
 	8. Added robot() method in CjrlGikMotionConstraint
