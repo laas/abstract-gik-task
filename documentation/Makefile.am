@@ -15,12 +15,11 @@ EXTRA_DIST = \
 	pictures/HRP2.jpg 
 
 install-data-hook: html
-	mkdir -p $(gikTaskDocdir)
-	$(INSTALL_DATA) html/* $(gikTaskDocdir)
-	mkdir -p $(gikTaskDocdir)/pictures
-	$(INSTALL_DATA) $(srcdir)/pictures/* $(gikTaskDocdir)/pictures
-	mkdir -p $(datadir)/doc/doxytag
-	$(INSTALL_DATA) abstractGikTask.doxytag $(datadir)/doc/doxytag
+	mkdir -p $(gikTaskDocdir)/html
+	$(INSTALL_DATA) html/* $(gikTaskDocdir)/html
+	mkdir -p $(gikTaskDocdir)/html/pictures
+	$(INSTALL_DATA) $(srcdir)/pictures/* $(gikTaskDocdir)/html/pictures
+	$(INSTALL_DATA) abstractGikTask.doxytag $(gikTaskDocdir)/html/.
 
 html: gikTask.dox
 	doxygen $<

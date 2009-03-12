@@ -1,4 +1,6 @@
-$Id: ChangeLog 2008/02/18 18:13:33 mallet $
+	10. Install html doc and doxytag file in 
+	    share/doc/abstractGikTask/html
+	9. Fix path to abstractRobotDynamics.doxytag
 
 jrl-interface-giktask version 1.4 released March 26, 2008
 

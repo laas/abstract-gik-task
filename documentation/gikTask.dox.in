@@ -157,7 +157,7 @@ SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration::additions related to external references   
 #---------------------------------------------------------------------------
-TAGFILES               = @ABS_ROBOT_DYN_PREFIX@/share/doc/doxytag/abstractRobotDynamics.doxytag=@ABS_ROBOT_DYN_PREFIX@/share/doc/abstractRobotDynamics \
+TAGFILES               = @ABS_ROBOT_DYN_DOCDIR@/html/abstractRobotDynamics.doxytag=@ABS_ROBOT_DYN_DOCDIR@/html \
 
 GENERATE_TAGFILE       = abstractGikTask.doxytag
 ALLEXTERNALS           = NO
