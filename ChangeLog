@@ -1,8 +1,8 @@
-	10. Install html doc and doxytag file in 
-	    share/doc/abstractGikTask/html
-	9. Fix path to abstractRobotDynamics.doxytag
+jrl-interface-giktask version 2.4 released March 14, 2009
 
-jrl-interface-giktask version 2.4 released February 26, 2009
+	12. Install html doc and doxytag file in 
+	    share/doc/abstractGikTask/html
+	11. Fix path to abstractRobotDynamics.doxytag
 
 	10.Created class CjrlLinearConstraint as base of CjrlGikStteConstraint, containing methods dimension(), jacobian() and value().
 	9. Added the method jacobianRoot() in CjrlGikStateConstraint
