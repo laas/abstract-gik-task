@@ -1,7 +1,7 @@
 #ifndef JRL_ROBOT_MOTION_H
 #define JRL_ROBOT_MOTION_H
 
-#include "robotDynamics/jrlHumanoidDynamicRobot.h"
+#include "abstract-robot-dynamics/humanoid-dynamic-robot.hh"
 
 /**
    \brief Defines the motion of a robot along time.
