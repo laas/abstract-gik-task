@@ -8,7 +8,7 @@
 #ifndef JRL_STATE_CONSTRAINT_H
 #define JRL_STATE_CONSTRAINT_H
 
-#include "robotDynamics/jrlHumanoidDynamicRobot.h"
+#include "abstract-robot-dynamics/humanoid-dynamic-robot.hh"
 #include "jrlLinearConstraint.h"
 
 /**

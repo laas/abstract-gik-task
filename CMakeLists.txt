@@ -28,6 +28,9 @@ SET(PROJECT_URL "")
 
 SET(CXX_DISABLE_WERROR True)
 
+# Dependency to abstract-robot-dynamics
+ADD_REQUIRED_DEPENDENCY(abstract-robot-dynamics >= 1.16.3)
+
 # Initialize generic properties of the project
 SETUP_PROJECT()
 
