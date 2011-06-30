@@ -37,9 +37,6 @@ SETUP_PROJECT()
 # Define subdirectories to explore for cmake
 ADD_SUBDIRECTORY(interfaces)
 
-# Generate dependency to abstract-gik-task in pc file
-PKG_CONFIG_APPEND_LIBS("abstract-gik-task")
-
 # Ask to generate the final steps.
 SETUP_PROJECT_FINALIZE()
 SETUP_PROJECT_CPACK()
