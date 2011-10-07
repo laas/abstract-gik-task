@@ -23,8 +23,7 @@ INCLUDE(cmake/cpack.cmake)
 # Define properties of the project
 SET(PROJECT_NAME abstract-gik-task)
 SET(PROJECT_DESCRIPTION "Interface to hpp-gik")
-SET(PROJECT_URL "")
-
+SET(PROJECT_URL "https://github.com/laas/abstract-gik-task")
 
 SET(CXX_DISABLE_WERROR True)
 
